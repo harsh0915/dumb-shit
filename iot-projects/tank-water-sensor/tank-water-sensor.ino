@@ -1,8 +1,8 @@
 int trigPin = 13;
 int echoPin = 5;
 int duration;
-int currentDistance;
-int totalDistance = 200;
+float currentDistance;
+int totalDistance = 11;
 float waterLevelPercentage;
 
 void setup() {
@@ -31,9 +31,9 @@ void loop() {
 
   // Convert the time into a distance
   currentDistance = (duration/2) / 29.1;     // Divide by 29.1 or multiply by 0.0343 for values in cm
-  waterLevelPercentage = (currentDistance/(float)totalDistance) * 100;
 
   Serial.print("Percentage filled : ");
-  Serial.print(waterLevelPercentage);
+//  Serial.print(currentDistance);
+  Serial.print(((float) (totalDistance-currentDistance)/(float)totalDistance)*100);
   Serial.println();
 }
